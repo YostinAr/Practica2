@@ -1,29 +1,30 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:th="http://wwww.thymeleaf.org"
-    xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-    <head th:replace="layout/plantilla :: head">
+
+<html xmlns:th?="http://www.thymeleaft.org">
+    <head>
         <title>TechShop</title>
+        <meta charset="UTF-8">
     </head>
     <body>
-        <header th:replace="layout/plantilla :: header"/>
-        <div class="container">
-            <h2 th:text="#{index.titulo}">Nuestros Articulos</h2>            
-            <div class="row row-cols-3" th:if="${articulos != null and !articulos.empty}">
-                <div class="card" th:each="articulo : ${articulos}" >
-           <img src="/img/leon.jpg" class="card-img-top" alt="equipo">  
-                    <div class="card-body">
-                        <h5 class="card-title">[[${articulo.descripcion}]]</h5>
-                        <h6 class="card-subtitle mb-2 text-muted text-end">[[${new java.text.DecimalFormat('¢#,##0.00').format(articulo.precio)}]]</h6>
-                        <a class="card-link" th:href="@{/carrito/agregar/} + ${articulo.idArticulo}">[[#{articulo.comprar}]]</a>
-                        <p class="card-text">[[${articulo.detalle}]]</p>                        
-                    </div>
-                </div>                
-            </div>
-            <div th:if="${articulos == null or articulos.empty}"  th:text="#{articulo.no_mostrar}">
-                No tenemos lista de articulos que mostrar...
-            </div>
+        <h1>Un cliente</h1>
+        <div th:if="${clientes !=null and !clientes.empty}">
+            <table border="1">
+               <tr>  
+        <th>Nombre:</th>
+        <th>Apellidos
+        <th>Correo</th>
+        <th>Teléfono</th>
+        </tr>
+        <tr th:each="cliente : ${cliente}">
+        <td th:text="${cliente.nombre}"/>
+        <td th:text="${cliente.apellidos}"/>
+        <td th:text="${cliente.correo}"/>
+        <td th:text="${cliente.telefono}"/>
+        </tr>
+         </table>
+        </div>  
+        <div th:if="${clientes ==null or clientes.empty}">
+            La lista de clientes está vacía
         </div>
-        <footer th:replace="layout/plantilla :: footer"/>
     </body>
 </html>
