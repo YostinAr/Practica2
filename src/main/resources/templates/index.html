@@ -8,13 +8,7 @@
         <meta charset="UTF-8">
             <link href="/css/estilo1.css" rel="stylesheet" type="text/css"/>
     </head>
-   <body bgcolor="#f5f5dc">
-        
-       
-        <center>
-            
-            <footer th:replace="layout/plantilla :: footer"/>
-            </center>
+   <body >
 
         <center><h1>Listado de estados</h1>
         
@@ -48,7 +42,10 @@
         <th>Pais</th>
         <th>Capital</th>
         <th>Idioma</th>
+        <th>Cantidad Poblacional</th>
         <th>Codigo Postal</th>
+        
+        
         <th>Eliminar</th>
         <th>Modificar</th>
          </tr>
@@ -60,6 +57,7 @@
         <td th:text="${estado.pais}"/></td>
         <td th:text="${estado.capital}"/></td>
         <td th:text="${estado.idioma}"/></td>
+        <td th:text="${estado.cantidad_Pob}"/></td>
         <td th:text="${estado.codigo_postal}"/></td>
         <td><a th:href="@{/eliminarEstado/} + ${estado.id_estado}">Eliminar</a></td>
         <td><a th:href="@{/modificarEstado/} + ${estado.id_estado}">Modificar</a></td>
