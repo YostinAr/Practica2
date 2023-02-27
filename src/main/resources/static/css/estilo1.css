@@ -1,0 +1,68 @@
+.td {
+  background-color: #f5f5dc;
+  border: 1px solid #7de3bb;
+  
+}
+.btn{
+    background-color: #7de3bb;
+}
+
+.mi-section {
+  border: 3px solid #000000;
+  padding: 10px;
+}
+
+.mi-section2 {
+  border: 3px solid #000000;
+}
+/* Estilos para el menú desplegable */
+      .menu {
+        width: 200px;
+        height: 200%;
+        position: fixed;
+        top: 0;
+        left: 1;
+        background-color: #546e47;
+        overflow-x: hidden;
+        padding-top: 10px;
+      }
+      
+      .menu a {
+        display: block;
+        color: #000;
+        padding: 5px;
+        text-decoration: none;
+      }
+      .menu a:hover {
+        background-color: #555;
+        color: #fff;
+      }
+      .menu .dropdown {
+        display: block;
+      }
+      .menu .dropdown-content {
+        display: none;
+        background-color: #546e47;
+      }
+      .menu .dropdown:hover .dropdown-content {
+        display: block;
+      }
+      
+
+      .title{
+    color:#7de3b1;
+    padding: 2px;
+    width: 200px;
+    height: 100%;
+    
+}
+
+.contenedor {
+  display: flex;
+}
+section {
+  flex: 1;
+}
+aside {
+  width: 25%;
+}

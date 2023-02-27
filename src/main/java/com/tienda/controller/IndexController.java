@@ -1,7 +1,7 @@
 package com.tienda.controller;
 
-import com.tienda.domain.Cliente;
-import com.tienda.service.ClienteService;
+import com.tienda.domain.Estado;
+import com.tienda.service.EstadoService;
 import org.springframework.ui.Model;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,38 +13,38 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Slf4j
 public class IndexController {
     @Autowired
-    private ClienteService clienteService;
+    private EstadoService estadoService;
     
     @GetMapping("/")
     public String inicio(Model model) {  
        log.info("Ahora se usa arquitectura MVC");
        
-       var clientes = clienteService.getClientes();
+       var estados = estadoService.getEstado();
        
-       model.addAttribute("clientes", clientes);
+       model.addAttribute("estados", estados);
         return "index";
     }    
     
-    @GetMapping("/nuevoCliente")
-    public String nuevoCliente(Cliente cliente){
-        return "modificarCliente";
+    @GetMapping("/nuevoEstado")
+    public String nuevoEstado(Estado estado){
+        return "modificarEstado";
     }
     
-    @PostMapping("/guardarCliente")
-    public String guardarCliente(Cliente cliente){
-        clienteService.save(cliente);
+    @PostMapping("/guardarEstado")
+    public String guardarEstado(Estado estado){
+        estadoService.save(estado);
         return "redirect:/";
     }
     
-    @GetMapping("/modificarCliente/{idCliente}")
-    public String modificarCliente(Cliente cliente, Model model){
-        cliente = clienteService.getCliente(cliente);
-        model.addAttribute("cliente", cliente);
-                return "modificarCliente";
+    @GetMapping("/modificarEstado/{id_estado}")
+    public String modificarEstado(Estado estado, Model model){
+        estado = estadoService.getEstado(estado);
+        model.addAttribute("estado", estado);
+                return "modificarEstado";
     }
-    @GetMapping("/eliminarCliente/{idCliente}")
-    public String eliminarCliente(Cliente cliente, Model model){
-        clienteService.delete(cliente);
+    @GetMapping("/eliminarEstado/{id_estado}")
+    public String eliminarEstado(Estado estado, Model model){
+        estadoService.delete(estado);
                 return "redirect:/";
     }
 }

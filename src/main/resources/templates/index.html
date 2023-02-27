@@ -1,42 +1,81 @@
 <!DOCTYPE html>
 
-<html xmlns:th?="http://www.thymeleaft.org">
+<html xmlns:th?="http://www.thymeleaft.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+       xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
     <head>
-        <title>TechShop</title>
+        <title>Listado de Estados</title>
         <meta charset="UTF-8">
+            <link href="/css/estilo1.css" rel="stylesheet" type="text/css"/>
     </head>
-    <body>
-        <header th:replace="layout/plantilla :: header"/>
-        <h2>Listado de clientes</h2>
-        <a th:href="@{/nuevoCliente}">Nuevo Cliente</a>
-        <div th:if="${clientes !=null and !clientes.empty}">
-            <table border="1">
+   <body bgcolor="#f5f5dc">
+        
+       
+        <center>
+            
+            <footer th:replace="layout/plantilla :: footer"/>
+            </center>
+
+        <center><h1>Listado de estados</h1>
+        
+        
+	 <section th:fragment="botonesAgregar" class="py-4 mb-4">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">   
+                        <button 
+                            type="button" 
+                            class="btn btn-block" 
+                            data-bs-toggle="modal" 
+                            data-bs-target="#agregarEstado">
+                            <i class="fas fa-plus"> 
+        <a th:href="@{/nuevoEstado}">Nuevo Estado</a>
+                            </i>
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <div th:if="${estados !=null and !estados.empty}">
+            <section class="mi-section2">
+            <table class="td"  border="1">
                 <thead>
-               <tr>  
-        <th>Nombre:</th>
-        <th>Apellidos</th>
-        <th>Correo</th>
-        <th>Teléfono</th>
+               <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Pais</th>
+        <th>Capital</th>
+        <th>Idioma</th>
+        <th>Codigo Postal</th>
         <th>Eliminar</th>
         <th>Modificar</th>
          </tr>
         </thead>
         <tbody>
-      <tr th:each="cliente : ${clientes}">
-          <td th:text="${cliente.nombre}"/></td>
-        <td th:text="${cliente.apellidos}"/></td>
-        <td th:text="${cliente.correo}"/></td>
-        <td th:text="${cliente.telefono}"/></td>
-        <td><a th:href="@{/eliminarCliente/} + ${cliente.idCliente}">Eliminar</a></td>
-        <td><a th:href="@{/modificarCliente/} + ${cliente.idCliente}">Modificar</a></td>
+      <tr th:each="estado : ${estados}">
+        <td th:text="${estado.id_estado}"/></td>
+        <td th:text="${estado.nombre_est}"/></td>
+        <td th:text="${estado.pais}"/></td>
+        <td th:text="${estado.capital}"/></td>
+        <td th:text="${estado.idioma}"/></td>
+        <td th:text="${estado.codigo_postal}"/></td>
+        <td><a th:href="@{/eliminarEstado/} + ${estado.id_estado}">Eliminar</a></td>
+        <td><a th:href="@{/modificarEstado/} + ${estado.id_estado}">Modificar</a></td>
+        
         
         </tr>
         </tbody>
          </table>
+            </section>
         </div>  
-        <div th:if="${clientes == null or clientes.empty}">
-            La lista de clientes está vacía
+        <div th:if="${estados == null or estados.empty}">
+            La lista de estados está vacía
         </div>
+            
+       <header th:replace="layout/plantilla_1 :: header"/>
         <footer th:replace="layout/plantilla :: footer"/>
+        </center>
     </body>
 </html>

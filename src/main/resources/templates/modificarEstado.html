@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th?="http://www.thymeleaft.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Estados</title>
+        <meta charset="UTF-8">
+            <link href="/css/estilo1.css" rel="stylesheet" type="text/css"/>
+    </head>
+   <body bgcolor="#f5f5dc">
+       
+        <header th:replace="layout/plantilla :: header"/>
+        <section class="mi-section">
+        <h2>Agregar datos de estados</h2>
+        
+      
+      <form th:action="@{/guardarEstado}"
+            method="post"
+            th:object="${estado}">
+            &nbsp;&nbsp; 
+            <input type="hidden" name="id_estado" th:field="*{id_estado}"/>
+            <label for="nombre_est">Nombre del Estado:</label>
+            <input type="text" name="nombre_est" th:field="*{nombre_est}"/>
+            </br>&nbsp;&nbsp; 
+            <label for="pais">Pais:</label>
+            <input type="text" name="pais" th:field="*{pais}"/>
+            </br>&nbsp;&nbsp; 
+            <label for="capital">Capital:</label>
+            <input type="text" name="capital" th:field="*{capital}"/>
+            </br>&nbsp;&nbsp; 
+            <label for="idioma">Idioma:</label>
+            <input type="text" name="idioma" th:field="*{idioma}"/>
+            </br>&nbsp;&nbsp; 
+            <label for="codigo_postal">Codigo Postal:</label>
+            <input type="text" name="codigo_postal" th:field="*{codigo_postal}"/>
+            </section>
+            <br>
+             <section th:fragment="botonesEditar">
+            <div id="actions" class="py-4 mb-4 bg-light">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <button type="submit" class="btn btn-success btn-block">
+                                <i class="fas fa-arrow">Guardar</i> 
+                            </button>
+                        <a th:href="@{/}" class="btn btn-block">
+                                <i class="fas fa-arrow-left">Regresar</i> 
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+                <center>
+            <header th:replace="layout/plantilla_1 :: header"/>
+            <footer th:replace="layout/plantilla :: footer"/>
+            </center>
+    </body>
+</html>
